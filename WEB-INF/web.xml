@@ -2,23 +2,31 @@
 <web-app xmlns="http://java.sun.com/xml/ns/j2ee">
     <display-name>hotelier</display-name>
     <description>This is a demo hotel-api client</description>
-    <welcome-file-list>
-        <welcome-file>index.html</welcome-file>
-    </welcome-file-list>
     <servlet>
         <servlet-name>hello</servlet-name>
         <servlet-class>HelloWorld</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>hotels</servlet-name>
+        <servlet-class>Hotels</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>links</servlet-name>
+        <servlet-class>LinkTracker</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>hello</servlet-name>
         <url-pattern>/hello</url-pattern>
     </servlet-mapping>
-    <servlet>
-        <servlet-name>hotels</servlet-name>
-        <servlet-class>Hotels</servlet-class>
-    </servlet>
     <servlet-mapping>
         <servlet-name>hotels</servlet-name>
         <url-pattern>/hotels</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>links</servlet-name>
+        <url-pattern>/LinkTracker</url-pattern>
+    </servlet-mapping>
+    <welcome-file-list>
+        <welcome-file>index.html</welcome-file>
+    </welcome-file-list>
 </web-app>
