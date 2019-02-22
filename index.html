@@ -1,8 +1,22 @@
 <html>
 <head>
 <title>Welcome to Hotelier!</title>
+<link rel="stylesheet" type="text/css" href="default.css">
 </head>
 <body>
-    <a href="hotels">Hotels</a>
+    <div class="center">
+        <h1>Search for hotels</h1>
+        <form method="get" action="search.jsp">
+            <span class="label">
+                Number of rooms
+            </span>
+            <select name="rooms">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+            </select>
+          <input type="submit" value="SEARCH" class="btn btn-search"/>
+        </form>
+    </div>
 </body>
 </html>
