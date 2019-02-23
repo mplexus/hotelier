@@ -15,8 +15,12 @@ public class HotelService {
         return getList(allHotelsUrl);
     }
 
-    public String listAvailable() {
-        return getList(availableHotelsUrl);
+    public String listAvailable(int rooms) {
+        String url = availableHotelsUrl;
+        if (rooms > 0) {
+            url += "?rooms=" + rooms;
+        }
+        return getList(url);
     }
 
     private String getList(String urlStr) {

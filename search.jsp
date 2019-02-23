@@ -27,7 +27,7 @@ User home.
   if(rooms <= 0){
 %>
 
-<h2>invalid number of rooms : <%=roomsStr%></h2>
+<h2>invalid parameter number of rooms: <%=roomsStr%></h2>
 
 <%
   }else{

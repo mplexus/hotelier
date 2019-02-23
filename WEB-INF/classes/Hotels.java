@@ -21,7 +21,15 @@ public class Hotels extends HttpServlet {
         out.println("<html><body>") ;
         out.println("<h1>Hotels</h1>") ;
 
-        String list = hotelService.listAvailable();
+        String roomsStr = request.getParameter("rooms");
+        int rooms = 0;
+        try{
+          rooms = Integer.parseInt(roomsStr);
+        }
+        catch(Exception e){
+          rooms = 0;
+        }
+        String list = hotelService.listAvailable(rooms);
         out.println(list);
 
         out.println("</html></body>") ;
