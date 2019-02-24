@@ -40,7 +40,7 @@
         <javac
             srcdir="WEB-INF/classes"
             destdir="WEB-INF/classes"
-            classpath="${jetty.home}/lib/servlet-api-3.1.jar"
+	        classpath="${jetty.home}/lib/servlet-api-3.1.jar:${jetty.home}/webapps/hotelier/WEB-INF/lib/saxon9he.jar"
             deprecation="yes"
             verbose="no">
         </javac>
