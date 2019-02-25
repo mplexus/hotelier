@@ -32,7 +32,7 @@ public class HotelService {
             URL url = new URL(urlStr);
             conn = (HttpURLConnection)url.openConnection();
             conn.setRequestMethod("GET");
-            conn.setRequestProperty("Accept", "application/json");
+            conn.setRequestProperty("Accept", "text/xml");
 
             if (conn.getResponseCode() != 200) {
                 throw new RuntimeException("HTTP GET Request Failed with Error code : "
