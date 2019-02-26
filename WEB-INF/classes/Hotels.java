@@ -62,17 +62,17 @@ public class Hotels extends HttpServlet {
             if (stylePath==null) {
                 throw new XPathException("Stylesheet " + style + " not found");
             }
-            TransformerFactory factory = TransformerFactory.newInstance();
-            Templates templates = factory.newTemplates(new StreamSource(list));
+            //TransformerFactory factory = TransformerFactory.newInstance();
+            //Templates templates = factory.newTemplates(new StreamSource(list));
             //Transformer transformer = templates.newTransformer();
 
-            String mime = templates.getOutputProperties().getProperty(OutputKeys.MEDIA_TYPE);
-            if (mime==null) {
+            //String mime = templates.getOutputProperties().getProperty(OutputKeys.MEDIA_TYPE);
+            //if (mime==null) {
                // guess
-                response.setContentType("text/html");
-            } else {
-                response.setContentType(mime);
-            }
+            //    response.setContentType("text/html");
+            //} else {
+            //    response.setContentType(mime);
+            //}
 
             //Processor processor = new Processor(false);
             //XsltCompiler compiler = processor.newXsltCompiler();
@@ -82,7 +82,7 @@ public class Hotels extends HttpServlet {
             XsltCompiler comp = proc.newXsltCompiler();
             XsltExecutable exp = comp.compile(new StreamSource(new File("webapps/hotelier/styles/list.xsl")));
             //XdmNode source = proc.newDocumentBuilder().build(new StreamSource(new File("webapps/hotelier/styles/list.xml")));
-            XdmNode source = proc.newDocumentBuilder().build(new StreamSource(new StringReader(hotelService.listAvailable(rooms))));
+            XdmNode source = proc.newDocumentBuilder().build(new StreamSource(new StringReader(list)));
             Serializer out = proc.newSerializer(response.getOutputStream());
             out.setOutputProperty(Serializer.Property.METHOD, "html");
             out.setOutputProperty(Serializer.Property.INDENT, "yes");
