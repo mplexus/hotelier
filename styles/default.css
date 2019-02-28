@@ -1,0 +1,30 @@
+:root {
+    font-family: Arial, sans-serif !important;
+}
+
+body {
+    font-family: Arial, sans-serif !important;
+}
+
+.center {
+    text-align: center;
+}
+
+.btn {
+    padding: 10px;
+    margin: 10px;
+    border-bottom: 3px solid #777;
+}
+
+.btn-search {
+    background-color: #C4D000;
+}
+
+.highlight {
+    color: #6d841c;
+    font-weight: bold;
+}
+
+.nowrap {
+    white-space: nowrap;
+}

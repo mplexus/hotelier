@@ -93,8 +93,10 @@ public class Hotels extends HttpServlet {
 
             //transformer.transform(new StreamSource(list), new StreamResult(out));
             //out.println(list);
+            System.err.println(list);
         } catch (Exception err) {
-            //out.println(err.getMessage());
+            ServletOutputStream out = response.getOutputStream();
+            out.println(err.getMessage());
             err.printStackTrace();
         }
 

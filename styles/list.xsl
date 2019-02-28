@@ -2,6 +2,10 @@
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
   <xsl:template match="/">
     <html>
+      <head>
+        <link rel="stylesheet" type="text/css" href="styles/default.css"/>
+        <link rel="stylesheet" type="text/css" href="styles/bootstrap/css/bootstrap.css"/>
+      </head>
       <body leftmargin="100" style="overflow: auto;">
         <div style="display:block;">
           <div style="float: left;width:20%;"></div>
@@ -41,8 +45,35 @@
 
   <xsl:template match="AvailRsp">
     <xsl:for-each select="Hotel">
-      <div style="background-color:#ccc">
-        <h5>ID: <xsl:value-of select="ID" /></h5>
+      <div>
+        <h5>Hotel name <xsl:value-of select="ID" /></h5>
+        <xsl:for-each select="RoomGroup">
+            <table style="border:1px solid #ddd;width:100%">
+                <tr>
+                    <th scope="col" colspan="3" style="float:left;">Room <xsl:value-of select="@index" /></th>
+                </tr>
+                <xsl:for-each select="Room">
+                    <tr>
+                        <td style="width:70%">
+                            <xsl:value-of select="name" />
+                            <xsl:value-of select="board" />
+                        </td>
+                        <td style="width:20%" class="highlight">
+                            <span class="nowrap">
+                                EUR <xsl:value-of select="price" />
+                            </span>
+                        </td>
+                        <td style="width:10%">
+                            <input type="radio" name="pickroom">
+                                <xsl:attribute name="value">
+                                    value="<xsl:value-of select="@id"/>"
+                                </xsl:attribute>
+                            </input>
+                        </td>
+                    </tr>
+                </xsl:for-each>
+            </table>
+        </xsl:for-each>
         <hr/>
       </div>
     </xsl:for-each>
