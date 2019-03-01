@@ -40,7 +40,7 @@
         <javac
             srcdir="WEB-INF/classes"
             destdir="WEB-INF/classes"
-	        classpath="${jetty.home}/lib/servlet-api-3.1.jar:${jetty.home}/webapps/hotelier/WEB-INF/lib/saxon9he.jar"
+	        classpath="${jetty.home}/lib/servlet-api-3.1.jar:${jetty.home}/webapps/hotelier/WEB-INF/lib/saxon9he.jar:${jetty.home}/webapps/hotelier/WEB-INF/lib/javax.xml.bind.jar:${jetty.home}/webapps/hotelier/WEB-INF/lib/jaxb-impl-2.2.6.jar:${jetty.home}/webapps/hotelier/WEB-INF/lib/javax.activation-1.1.0.v201105071233.jar"
             deprecation="yes"
             verbose="no">
         </javac>

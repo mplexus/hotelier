@@ -1,3 +1,4 @@
+import java.io.File;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -13,6 +14,10 @@ public class HotelService {
 
     public String listAll() {
         return getList(allHotelsUrl);
+    }
+
+    public File listAllDemo() {
+        return new File("webapps/hotelier/styles/listAllDemo.xml");
     }
 
     public String listAvailable(int rooms) {

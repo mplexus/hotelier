@@ -1,0 +1,402 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Hotels>
+    <Hotel id="2882">
+        <Name>Alcudia Garden Aparthotel</Name>
+        <Stars_Rating>3</Stars_Rating>
+        <Description>The Alcudia Garden Aparthotel is situated in the heart of the Alcudia Harbour and 80m from the beach of Alcudia. The comfortable apartments all have wonderful amenities which
+            include satellite television, kitchen, fridge, and terrace. There are a lot of services for a relaxing holiday such as outdoor swimming pool, an indoor swimming pool (heated during the
+            winter season), gym, sauna, Jacuzzi, restaurants, and bars. It's approximately 60 km away from the Palm Airport. The hotel offers a range of entertainment programs for both adults and
+            children during high season.
+        </Description>
+        <Photos>
+            <Photo>http://images.youtravel.com/photos/2882/XML.jpg</Photo>
+            <Photo featured="">http://images.youtravel.com/photos/2882/SPA.jpg</Photo>
+            <Photo>http://images.youtravel.com/photos/2882/MAIN.jpg</Photo>
+            <Photo>http://images.youtravel.com/photos/2882/BATHROOM.jpg</Photo>
+            <Photo>http://images.youtravel.com/photos/2882/ROOM.jpg</Photo>
+        </Photos>
+        <Facility>
+            <Facility>Animation</Facility>
+            <Facility>Bar(s)</Facility>
+            <Facility>Childrens Playground</Facility>
+            <Facility>Gym</Facility>
+            <Facility>Jacuzzi</Facility>
+        </Facility>
+    </Hotel>
+    <Hotel id="16255">
+        <Name>Monnaber Nou</Name>
+        <Stars_Rating>4</Stars_Rating>
+        <Description>Set in over 370 acres of the most unspoilt Majorcan countryside, the Monnaber Nou Eco Hotel &amp; Spa is a restored manor house, giving it the essence of the beautiful and
+            tranquil island which first attracted tourists well over a century ago.
+
+            The hotel includes a world class restaurant offering Majorcan and Mediterranean cuisine. Guests may select from the rich breakfast buffet, some of the ingredients are even picked and grown
+            on Monnaber Nou's own land, adding a unique and exclusive taste to Restaurants repertoire. A wine cellar housing many of Majorca's local wine, and an indoor and outdoor swimming pool are
+            just a few of the great facilities and services provided. Monnaber Nou offers guests the opportunity to practice their favourite sports or pastimes either through its own facilities or by
+            arrangement with local establishments. There are a wide variety of options for all ages and abilities. The hotel keeps four horses whose training and temperament make riding enjoyable for
+            everyone. Guests visit the Monnaber Nou Eco Hotel &amp; Spa for its exquisite spa, offering indoor and outdoor spa baths, steam room, two saunas, swimming pool and fitness room. The Spa
+            offers a range of beauty treatments with qualified therapists able to advise clients on the treatments which they will find most beneficial. The elegantly decorated rooms provide intimacy
+            and warmth providing guests many amenities such as satellite TV, air conditioning, wireless internet, and minibar.
+
+            Double/twin rooms standard are in " Finca House" building that is situated 600 metres away the main house. The breakfast is served in building Finca House for all customers that have
+            booked standard room.
+
+            The Monnaber Nou Eco Hotel &amp; Spa is the perfect base for exploring the breath-taking 'Serra de Tramuntana' mountain range and a myriad of other well established routes. A variety of
+            walking tours is available to suit all tastes and abilities. Hotel staff will be happy to help you to plan your own personal routes. To offer a satisfactory stay to cycling guests,
+            Monnaber Nou has its own Bike Station.
+
+            The Monnaber Nou Eco Hotel &amp; Spa is approximately 50km from Palma de Mallorca Airport.
+        </Description>
+        <Photos>
+            <Photo>http://images.youtravel.com/photos/16255/spa2.jpg</Photo>
+            <Photo>http://images.youtravel.com/photos/16255/main.jpg</Photo>
+            <Photo>http://images.youtravel.com/photos/16255/DBL DELUXE.jpg</Photo>
+            <Photo featured="">http://images.youtravel.com/photos/16255/SUITE MONN.jpg</Photo>
+            <Photo>http://images.youtravel.com/photos/16255/RESTAURANT.jpg</Photo>
+        </Photos>
+        <Facility>
+            <Facility>Baby cot</Facility>
+            <Facility>Bike Rental</Facility>
+            <Facility>Bike storage room</Facility>
+            <Facility>Conference Banquet Meeting Facilities</Facility>
+            <Facility>Fax</Facility>
+
+        </Facility>
+    </Hotel>
+    <Hotel id="14498">
+        <Name>Continental Hotel</Name>
+        <Stars_Rating>4</Stars_Rating>
+        <Description>The Continental Hotel is ideally located close to the city centre, just a few paces from the elegant Avenida Jaime III and the Paseo Maritimo. It is a stones throw away from many
+            bars, restaurants, shopping , entertainment, and sights such as the cathedral, Museu Es Baluard and El Corte Inglï¿½s department store are a mere 50 m away. The railway station is 400 m
+            away and it is about 500 m to the nearest bus stop. There is a beach some 2 km from the hotel. Opened in 2006, this 5-storey air-conditioned conference hotel comprises a total of 52 double
+            rooms of which 1 has wheelchair access. The hotel is ideal for business groups, as it features a conference room with a video projector system, a 2.5 sqm screen and a seating capacity of
+            80 persons. Furthermore, the hotel includes a wonderful dining room that has been elegantly decorated with authentic works of art where it is possible to breakfast or enjoy the varied
+            offerings of the hotel restaurant, as well as a foyer with a 24-hour reception desk, a safe, a currency exchange desk, a cloakroom and 3 lifts. Dining options include a cafe and a bar, and
+            there
+            is a theatre hall and a TV room to make use of. Breakfast may be selected from an ample buffet; lunch and the evening meal may be taken a la carte or chosen from a menu. Special dietary
+            requirements can be catered to.
+            For guests' rest and relaxation, the hotel offers excellent leisure facilities such as a gym, a Jacuzzi, a sauna and Turkish baths. The nearest golf course is approximately 5 km away. It
+            is possible to gain access to the Internet and there is garage parking for those arriving by car. Room and laundry services are also available.
+            The guestrooms at the Continental Hotel have been decorated in a different style and feature an en suite bathroom with a hairdryer, a direct dial telephone, a minibar, a safe, a radio,
+            Internet access (WiFi), an LCD TV, and a balcony or terrace. Individually controllable heating and air conditioning come as standard.
+        </Description>
+        <Photos>
+            <Photo>http://images.youtravel.com/photos/14498/GYM.jpg</Photo>
+            <Photo featured="">http://images.youtravel.com/photos/14498/main.jpg</Photo>
+            <Photo>http://images.youtravel.com/photos/14498/hotel1.jpg</Photo>
+            <Photo>http://images.youtravel.com/photos/14498/hotel2.jpg</Photo>
+
+        </Photos>
+        <Facility>
+            <Facility>24Hr Reception</Facility>
+            <Facility>A la Carte Restaurant</Facility>
+            <Facility>Bar</Facility>
+            <Facility>Bike storage room</Facility>
+            <Facility>Cafe</Facility>
+            <Facility>Car rental (Extra charge)</Facility>
+        </Facility>
+    </Hotel>
+    <Hotel id="9702">
+        <Name>Beverly Playa</Name>
+        <Stars_Rating>3</Stars_Rating>
+        <Description>Beverly Playa is situated on the beachfront of one of the best beaches of Paguera Village, this hotel is a short distance from the centre of this tourist destination par
+            excellence of Mallorca. This 3-star Calvia hotel has 3 outdoor pools (one of them for children),a restaurant serving breakfast, lunch and dinner so there's no need to worry about dining
+            options on this trip. If you are in need of rest and relaxation you can find an outdoor jacuzzi, a fitness facility and a sauna on offer.
+        </Description>
+        <Photos>
+            <Photo featured="">http://images.youtravel.com/photos/9702/xml.jpg</Photo>
+            <Photo>http://images.youtravel.com/photos/9702/hotel2.jpg</Photo>
+            <Photo>http://images.youtravel.com/photos/9702/hotel1.jpg</Photo>
+        </Photos>
+        <Facility>
+            <Facility>2 Outdoor Swimming Pools</Facility>
+            <Facility>24hrs Reception</Facility>
+        </Facility>
+    </Hotel>
+    <Hotel id="4861">
+        <Name>Coronado Thalasso and Spa</Name>
+        <Stars_Rating>4</Stars_Rating>
+        <Description>The hotel is located on a small peninsula , surrounded by pineforest. One can enjoy a splendid sea view from all its rooms. All the rooms are equipped with air conditioning,
+            Satellite TV, telephone, safety deposit box and a small refrigerator. Relaxing at the ample terrace surrounding the refreshing seawater swimming pool or taking a dive in sea, to be reached
+            by stairs directly beneath the hotel, all options are within reach.
+
+            For the sporty the hotel has an equipped gym, sauna, whirlpool and a heated indoor seawater swimming pool . The pine forest surroundings of the hotel are ideal for walks and there are
+            ample possibilities for cycling as well. Whatever sport you are interested in, the reception personnel will gladly advice you.
+        </Description>
+        <Photos>
+            <Photo>http://images.youtravel.com/photos/4861/hotel3.jpg</Photo>
+            <Photo>http://images.youtravel.com/photos/4861/hotel4.jpg</Photo>
+            <Photo featured="">http://images.youtravel.com/photos/4861/hotel5.jpg</Photo>
+            <Photo>http://images.youtravel.com/photos/4861/hotel6.jpg</Photo>
+            <Photo>http://images.youtravel.com/photos/4861/hotel7.jpg</Photo>
+        </Photos>
+        <Facility>
+            <Facility>Air Conditioning Climate Control</Facility>
+            <Facility>Fitness room</Facility>
+            <Facility>Free WiFi</Facility>
+            <Facility>Parking (Extra Charge)</Facility>
+        </Facility>
+    </Hotel>
+    <Hotel id="12560">
+        <Name>Club Sera Hotel</Name>
+        <Stars_Rating>5</Stars_Rating>
+        <Description>The Club Hotel Sera is an extremely elegant hotel huddled in the striking, lush gardens of the Lara resort in Antalya. Found overlooking one of the only stretches of sandy beach
+            in the region, this sophisticated five star hotel is a stunning place to spend your holiday.The staff in this 13 storey hotel speaks English, German and Russian. A playground for children
+            is available. 3 fresh water swimming pools, seasonally open are available. The hotel is within easy reach of medical services, bus stops and taxi stands. Accessible from the hotel: airport
+            AYT (9 km).
+        </Description>
+        <Photos>
+            <Photo>http://images.youtravel.com/photos/12560/BEACH.jpg</Photo>
+            <Photo>http://images.youtravel.com/photos/12560/INDOOR POOL.jpg</Photo>
+            <Photo featured="">http://images.youtravel.com/photos/12560/INTERIOR.jpg</Photo>
+            <Photo>http://images.youtravel.com/photos/12560/MASSAGE.jpg</Photo>
+        </Photos>
+        <Facility>
+            <Facility>A la Carte Restaurant</Facility>
+            <Facility>Billiards (Extra Charge)</Facility>
+            <Facility>Bowling (Extra Charge)</Facility>
+            <Facility>Tennis Court</Facility>
+            <Facility>Wi Fi Internet Connection (free of charge) only in lobby</Facility>
+        </Facility>
+    </Hotel>
+    <Hotel id="10159">
+        <Name>Limak Limra Resort and Hotel</Name>
+        <Stars_Rating>5</Stars_Rating>
+        <Description>Limak Limra Resort &amp; Hotel, which is located in a popular tourist resort area of Antalya - Kemer / Kirish borough at the bottom of a historical mountain Olympus right at the
+            sea, and which received an award for its architecture, started rendering services in August 1998. Orange trees, playgrounds for families with children and 2 a-la carte restaurants with
+            various types of cuisine, the hotel offers all its guests an opportunity to spend a unique holiday. There are standard rooms in the main building, Arycanda, Fame Garden buildings of the
+            hotel complex. There are family rooms in the hotel. They consist of 2 separate standard rooms. the main restaurant of our hotel. Its total capacity (indoor and outdoor) is 1500 people.
+            International buffet, diet buffet, children's buffet. There are 6 pools and a fully equipped fitness centre available in Limak Limra. The Oxygen Health Centre offers a variety of massage
+            treatments, including Thai massage, by professional local and foreign staff. The hotel is 70 km from Antalya Airport. Free parking is also available on site.
+        </Description>
+        <Photos>
+            <Photo>http://images.youtravel.com/photos/10159/i.jpg</Photo>
+            <Photo>http://images.youtravel.com/photos/10159/j.jpg</Photo>
+            <Photo featured="">http://images.youtravel.com/photos/10159/k.jpg</Photo>
+            <Photo>http://images.youtravel.com/photos/10159/l.jpg</Photo>
+            <Photo>http://images.youtravel.com/photos/10159/f.jpg</Photo>
+        </Photos>
+        <Facility>
+            <Facility>Air Conditioning Climate Control</Facility>
+            <Facility>Billiards</Facility>
+        </Facility>
+    </Hotel>
+    <Hotel id="8369">
+        <Name>Delphin Imperial Lara</Name>
+        <Stars_Rating>5</Stars_Rating>
+        <Description>The Delphin Imperial Lara is a beautiful 5* hotel with a prime location in Lara, just along the coast from the vibrant city of Antalya. The Delphin Imperial Lara boasts a unique
+            architecture and luxurious interiors. As well as the incredible choice of swimming pools set amongst landscaped gardens, there is also a tennis court, and a playground. Inside is an indoor
+            pool, a fully equipped fitness centre and a Spa where guests can enjoy a Turkish Hamam or treat themselves to a massage. Central the rooms of Delphin Imperial Lara are decorated in
+            contemporary design. Air conditioning is central and by the hour, LCD TV with satellite TV channels are included in all rooms. And Breakfast, late Breakfast, Lunch and dinner are served as
+            an open buffet in the main restaurant. Antalya city centre is 15 km from Delphin Imperial Lara while Antalya Airport is approximately 10km away.
+        </Description>
+        <Photos>
+            <Photo>http://images.youtravel.com/photos/8369/hotel1.jpg</Photo>
+            <Photo featured="">http://images.youtravel.com/photos/8369/hotel3.jpg</Photo>
+        </Photos>
+        <Facility>
+            <Facility>Turkish Bath( Extra Charge )</Facility>
+            <Facility>Wifi in lobby and rooms</Facility>
+        </Facility>
+    </Hotel>
+    <Hotel id="21243">
+        <Name>Mirage Park Resort</Name>
+        <Stars_Rating>5</Stars_Rating>
+        <Description>Mirage Park Resort is located on an area of 110.000 sqm in Goynuk. At a distance of 45km to Antalya International Airport, 35 km to the Antalya City Center and just 7 km to the
+            heartbeat of the region, Kemer. Turquoise Mediterranean, a beautiful long beach (450m) with small rocks covered up with sands and the pine trees surround Goynuk - Kemer, the district of
+            the paradise Antalya.
+
+            This facility which has a long beach is preferred by families with children. The 598 rooms featuring these forest and sea views, create a sense of comfort and retreat while the Ultra All
+            Inclusive restaurant turns dining into a joy. Experience local perfection as well as a wide variety of world cuisines to suit any appetite.
+
+            Total 598 comfortable rooms, all the rooms are equipped with: key card entrance, central air conditioning, minibar, satellite TV, direct dial phone, safe, bathroom&amp;WC, hairdryer,
+            balcony or terrace with sea, garden or mountain view.5 handicapped rooms are available for disabled guests.
+
+            Hotel have the choice of extensive buffet, featuring in both indoor and outdoor restaurants. High-quality service is offered with 2 thematic A'la Carte Restaurants, the main restaurant,
+            and various bars with the ultra all inclusive rich food and beverage concept.
+        </Description>
+        <Photos>
+            <Photo>http://images.youtravel.com/photos/21243/ROOM4.jpg</Photo>
+            <Photo>http://images.youtravel.com/photos/21243/SPA.jpg</Photo>
+            <Photo>http://images.youtravel.com/photos/21243/VILLA.jpg</Photo>
+            <Photo featured="">http://images.youtravel.com/photos/21243/MAIN.jpg</Photo>
+        </Photos>
+        <Facility>
+            <Facility>Aerobic</Facility>
+            <Facility>Jet Ski (Extra Charge)</Facility>
+            <Facility>Kids club</Facility>
+            <Facility>Laundry (Extra Charge)</Facility>
+            <Facility>Massage (Extra Charge)</Facility>
+            <Facility>Wi-Fi Internet Connection (Free of Charge)</Facility>
+        </Facility>
+    </Hotel>
+    <Hotel id="35094">
+        <Name>Double Tree By Hilton Kemer Antalya</Name>
+        <Stars_Rating>5</Stars_Rating>
+        <Description>DoubleTree by Hilton Antalya Kemer is located in the heart of Kemer, on the coastline of Mediterranean Sea and surrounded by the Taurus Mountains. Guests can enjoy Food Festival
+            with mobile food trucks with delectable cuisine from around the world and in the Ibiza Beach Club where is the staff brings the real beach experience alive.
+
+            It is also suitable for business travellers with 5 meeting halls. DoubleTree by Hilton Antalya Kemer offers rich and delicious tastes to guests with 1 Main Restaurant, 1 Snack Restaurant,
+            4 a la carte Restaurants (Italian Cuisine, Bedouin Cuisine, Sea Foods, Barbeque) and different Eat Mobile and different Street Food Truck points located at different points of the facility
+            with different working hours.
+        </Description>
+        <Photos>
+            <Photo featured="">http://images.youtravel.com/photos/35094/hotel8.jpg</Photo>
+            <Photo>http://images.youtravel.com/photos/35094/hotel9.jpg</Photo>
+            <Photo>http://images.youtravel.com/photos/35094/xml.jpg</Photo>
+            <Photo>http://images.youtravel.com/photos/35094/hotel10.jpg</Photo>
+            <Photo>http://images.youtravel.com/photos/35094/hotel11.jpg</Photo>
+            <Photo>http://images.youtravel.com/photos/35094/hotel13.jpg</Photo>
+        </Photos>
+        <Facility>
+            <Facility>Beach Towel</Facility>
+            <Facility>Restaurant</Facility>
+            <Facility>Swimming Pool for Children</Facility>
+            <Facility>Swimming Pools</Facility>
+        </Facility>
+    </Hotel>
+    <Hotel id="21907">
+        <Name>LABRANDA Garden Makadi</Name>
+        <Stars_Rating>4</Stars_Rating>
+        <Description>LABRANDA Makadi Garden - Select, an ultimate choice for modern accommodation nestled within close proximity to the beach and includes direct access to the private beach of
+            LABRANDA Club Makadi with complimentary shuttle service.
+
+            The hotel boasts 281 modern decorated rooms with balconies, a half board and full board concept with a couple of options for lunch in the resort or LABRANDA Club Makadi (by extra charge).
+            Lunch and drinks in beach bar in LABRANDA Club Makadi is free for all-inclusive guests. The hotel's facilities also include a spa to add a sense of relaxation and serenity. There are daily
+            evening shows as well as access to a variety of bars within the resort or at LABRANDA Club Makadi (against charge)
+
+            The connectivity wifi at the lobby and restaurant terrace is available. Dart, billiards and board games are also some of many in-house leisure options. LABRANDA Garden Makadi is located
+            900m from the beach, 20km from shops, and 30km from the airport.
+        </Description>
+        <Photos>
+            <Photo>http://images.youtravel.com/photos/21907/hotel3.jpg</Photo>
+            <Photo featured="">http://images.youtravel.com/photos/21907/hotel4.jpg</Photo>
+            <Photo>http://images.youtravel.com/photos/21907/hotel5.jpg</Photo>
+            <Photo>http://images.youtravel.com/photos/21907/hotel6.jpg</Photo>
+        </Photos>
+        <Facility>
+            <Facility>2 Swimming Pool Outdoor</Facility>
+            <Facility>24hrs Reception</Facility>
+            <Facility>Bar</Facility>
+            <Facility>Swimming pool for children (outdoor)</Facility>
+            <Facility>Tennis Courts (reservation required - extra charge)</Facility>
+            <Facility>Wellness Centre (extra charge)</Facility>
+            <Facility>Wi Fi Internet Connection (Lobby and Restaurant)</Facility>
+        </Facility>
+    </Hotel>
+    <Hotel id="1209">
+        <Name>LABRANDA Royal Makadi</Name>
+        <Stars_Rating>5</Stars_Rating>
+        <Description>LABRANDA Royal Makadi - Premium, being one of highest category properties within LABRANDA Hotels and Resorts, this resort is a perfect blend between elegance and uniqueness. It's
+            absolutely stunning setting in Makadi Bay, overlooking its own pristine private beach makes it as remarkable holiday destination. An endless variety of activities awaits with diving, water
+            sports, snorkeling, kayak, canoes on the crystal blue waters and coral reefs showcasing the magical underwater world of the Red Sea. The resort adopts an Ultra all-inclusive concept with
+            unlimited house beverages and a wide selection of culinary delights.
+
+            The rooms are contemporary with terraces overlooking the pools and gardens. The resort follows and extensive non- typical Ultra all-inclusive concept with LABRANDA Royal Makadi various
+            dining options over breakfast, lunch and dinner.
+
+            The freshwater swimming pools are temperature controlled. The salt-water pool is a unique feature, and the dedicated kids' pool add to the facilities of this holiday venue.
+
+            Available is also in-house gymnasium and tennis courts, squash, archery and many more activities.
+            The experience is complete with the presence of a kids club with drawing and activity room for the children. For business requirements, a conference room is available along with bespoke
+            services.
+            LABRANDA Royal Makadi is located 20km from Senzo Mall, 30km from the airport and 35km from restaurants.
+        </Description>
+        <Photos>
+            <Photo>http://images.youtravel.com/photos/1209/hotel8.jpg</Photo>
+            <Photo>http://images.youtravel.com/photos/1209/hotel12.jpg</Photo>
+            <Photo>http://images.youtravel.com/photos/1209/hotel13.jpg</Photo>
+            <Photo featured="">http://images.youtravel.com/photos/1209/hotel16.jpg</Photo>
+            <Photo>http://images.youtravel.com/photos/1209/main.jpg</Photo>
+            <Photo>http://images.youtravel.com/photos/1209/hotel6.jpg</Photo>
+        </Photos>
+        <Facility>
+            <Facility>24hrs Reception</Facility>
+            <Facility>Animation Programme</Facility>
+            <Facility>Aqua Gym</Facility>
+            <Facility>Bar(s)</Facility>
+            <Facility>Beach volleyball</Facility>
+            <Facility>Wi Fi Internet (in public areas - free of charge)</Facility>
+        </Facility>
+    </Hotel>
+    <Hotel id="2933">
+        <Name>Captains Inn</Name>
+        <Stars_Rating>3</Stars_Rating>
+        <Description>The Captains Inn is a small complex situated in the beautiful resort of El Gouna. It consists of rooms designed to offer guests comfort and services. The hotel amenities include
+            restaurants and bars, among others.
+        </Description>
+        <Photos>
+            <Photo featured="">http://images.youtravel.com/photos/2933/xml.jpg</Photo>
+            <Photo>http://images.youtravel.com/photos/2933/Main.jpg</Photo>
+            <Photo>http://images.youtravel.com/photos/2933/Room.jpg</Photo>
+            <Photo>http://images.youtravel.com/photos/2933/Restaurant.jpg</Photo>
+        </Photos>
+        <Facility>
+            <Facility>24hrs Reception</Facility>
+            <Facility>Bar(s)</Facility>
+            <Facility>Swimming Pool Outdoor</Facility>
+        </Facility>
+    </Hotel>
+    <Hotel id="2741">
+        <Name>Tagadirt Hotel</Name>
+        <Stars_Rating>3</Stars_Rating>
+        <Description>Tagadirt Hotel is situated in the famous resort of Agadir, Morocco. It consists of apartments designed to offer guests comfort and services. The hotel amenities include swimming
+            pool, restaurants, a poolside snack bar, table tennis and Tv-lounge, among many others. It is a good choice for those looking for relaxing and joyful holidays. The hotel is located 250 m
+            from the beach approximately 25 km from the airport.
+        </Description>
+        <Photos>
+            <Photo>http://images.youtravel.com/photos/2741/Entrance.jpg</Photo>
+            <Photo featured="">http://images.youtravel.com/photos/2741/Kids.jpg</Photo>
+            <Photo>http://images.youtravel.com/photos/2741/Outside.jpg</Photo>
+        </Photos>
+        <Facility>
+            <Facility>Table Tennis</Facility>
+            <Facility>TV Lounge</Facility>
+        </Facility>
+    </Hotel>
+    <Hotel id="2610">
+        <Name>El Pueblo Tamelalt</Name>
+        <Stars_Rating>3</Stars_Rating>
+        <Description>El Pueblo Tamlelt is located in the seaside, on the south coast of Morocco, approximately 350 meters from a 12km long sandy beach. It is constructed in a typical Moorish style and
+            is situated in a large area of natural surroundings with palm trees and exotic gardens of bougainvillaea and rosemary. The hotel's facilities include among others: 4 large outdoor swimming
+            pools, 4 tennis courts, mini golf, volleyball court, spa and various water sports. The distance from the airport is approximately 30 km.
+        </Description>
+        <Photos>
+            <Photo>http://images.youtravel.com/photos/2610/ROOM2.jpg</Photo>
+            <Photo featured="">http://images.youtravel.com/photos/2610/ROOM3.jpg</Photo>
+            <Photo>http://images.youtravel.com/photos/2610/DINING.jpg</Photo>
+            <Photo>http://images.youtravel.com/photos/2610/DINING2.jpg</Photo>
+        </Photos>
+        <Facility>
+            <Facility>SPA</Facility>
+            <Facility>Swimming Pool for Children</Facility>
+            <Facility>Swimming Pool Outdoor</Facility>
+            <Facility>Tennis Court(s)</Facility>
+            <Facility>Theme restaurant</Facility>
+            <Facility>Volleyball</Facility>
+            <Facility>Water Sports</Facility>
+            <Facility>Wi Fi Internet Connection</Facility>
+        </Facility>
+    </Hotel>
+    <Hotel id="22983">
+        <Name>Blau Privilege Porto Petro Beach Resort and Spa</Name>
+        <Stars_Rating>5</Stars_Rating>
+        <Description>Discover and enjoy all facilities and services available in Blau Privilege PortoPetro Beach Resort &amp; Spa while the sea is a protagonist during your stay too.
+
+            The hotel offers buffet restaurants, animation, live music and restaurants that guests can enjoy during their stay. Room are equipped with mini bar, terrace and free Wi Fi.
+        </Description>
+        <Photos>
+            <Photo>http://images.youtravel.com/photos/22983/H15.jpg</Photo>
+            <Photo>http://images.youtravel.com/photos/22983/H16.jpg</Photo>
+            <Photo featured="">http://images.youtravel.com/photos/22983/H17.jpg</Photo>
+            <Photo>http://images.youtravel.com/photos/22983/H18.jpg</Photo>
+            <Photo>http://images.youtravel.com/photos/22983/H19.jpg</Photo>
+            <Photo>http://images.youtravel.com/photos/22983/main.jpg</Photo>
+            <Photo>http://images.youtravel.com/photos/22983/H20.jpg</Photo>
+        </Photos>
+        <Facility>
+            <Facility>2 Buffet Restaurants</Facility>
+            <Facility>SPA (Entrance free of charge)</Facility>
+            <Facility>Swimming pool towels</Facility>
+        </Facility>
+    </Hotel>
+</Hotels>

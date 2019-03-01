@@ -8,6 +8,12 @@ import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
 import javax.xml.transform.TransformerFactory;
 
+import javax.xml.bind.*;
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Unmarshaller;
+import com.sun.xml.bind.v2.*;
+
 import net.sf.saxon.s9api.*;
 import net.sf.saxon.s9api.Processor;
 import net.sf.saxon.s9api.XsltCompiler;
@@ -20,6 +26,8 @@ import net.sf.saxon.TransformerFactoryImpl;
 public class Hotels extends HttpServlet {
 
     private HotelService hotelService = null;
+
+    private HotelData hotelData = null;
 
     public Hotels() {
         super();
@@ -51,19 +59,34 @@ public class Hotels extends HttpServlet {
           rooms = 0;
         }
 
-        String list = hotelService.listAvailable(rooms);
+
+        if (hotelData == null) {
+            File file = hotelService.listAllDemo();
+            try {
+                JAXBContext jaxbContext = JAXBContext.newInstance(HotelData.class);
+                Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
+                hotelData = (HotelData) jaxbUnmarshaller.unmarshal(file);
+                System.err.println(hotelData);
+	        } catch (JAXBException e) {
+		         e.printStackTrace();
+	        }
+            String hotelDataStr = hotelService.listAll();
+            //System.err.println(hotelDataStr);
+        }
+
+        String listAvailable = hotelService.listAvailable(rooms);
         //DocumentBuilder db = DocumentBuilderFactory.newDocumentBuilder();
-        //InputStream listInputStream = new InputStream(new StringReader(list));
-        //Document dom = db.parse(new InputSource(new StringReader(list)));
+        //InputStream listInputStream = new InputStream(new StringReader(listAvailable));
+        //Document dom = db.parse(new InputSource(new StringReader(listAvailable)));
 
         try {
-            String style = "styles/list.xsl";
-            String stylePath = getServletContext().getRealPath(style);
-            if (stylePath==null) {
-                throw new XPathException("Stylesheet " + style + " not found");
-            }
+            //String style = "styles/list.xsl";
+            //String stylePath = getServletContext().getRealPath(style);
+            //if (stylePath==null) {
+            //    throw new XPathException("Stylesheet " + style + " not found");
+            //}
             //TransformerFactory factory = TransformerFactory.newInstance();
-            //Templates templates = factory.newTemplates(new StreamSource(list));
+            //Templates templates = factory.newTemplates(new StreamSource(listAvailable));
             //Transformer transformer = templates.newTransformer();
 
             //String mime = templates.getOutputProperties().getProperty(OutputKeys.MEDIA_TYPE);
@@ -82,7 +105,7 @@ public class Hotels extends HttpServlet {
             XsltCompiler comp = proc.newXsltCompiler();
             XsltExecutable exp = comp.compile(new StreamSource(new File("webapps/hotelier/styles/list.xsl")));
             //XdmNode source = proc.newDocumentBuilder().build(new StreamSource(new File("webapps/hotelier/styles/list.xml")));
-            XdmNode source = proc.newDocumentBuilder().build(new StreamSource(new StringReader(list)));
+            XdmNode source = proc.newDocumentBuilder().build(new StreamSource(new StringReader(listAvailable)));
             Serializer out = proc.newSerializer(response.getOutputStream());
             out.setOutputProperty(Serializer.Property.METHOD, "html");
             out.setOutputProperty(Serializer.Property.INDENT, "yes");
@@ -91,9 +114,9 @@ public class Hotels extends HttpServlet {
             trans.setDestination(out);
             trans.transform();
 
-            //transformer.transform(new StreamSource(list), new StreamResult(out));
-            //out.println(list);
-            System.err.println(list);
+            //transformer.transform(new StreamSource(listAvailable), new StreamResult(out));
+            //out.println(listAvailable);
+            System.err.println(listAvailable);
         } catch (Exception err) {
             ServletOutputStream out = response.getOutputStream();
             out.println(err.getMessage());
