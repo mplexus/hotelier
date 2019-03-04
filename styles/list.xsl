@@ -3,6 +3,7 @@
     xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
     xmlns:map="http://www.w3.org/2005/xpath-functions/map"
+    xmlns:lxslt="http://xml.apache.org/xslt"
     exclude-result-prefixes="#all"
     expand-text="yes"
     >
@@ -22,23 +23,23 @@
           <div style="float: left;width:20%;">
             <strong>Filter hotels</strong>
             <div>
-              <input type="checkbox" id="onestar" name="drone" value="1" onclick="filter(1)"/>
+              <input type="checkbox" id="onestar" name="drone" value="1" onclick="filter(this);"/>
               <label for="onestar">1 star</label>
             </div>
             <div>
-              <input type="checkbox" id="twostars" name="drone" value="2" onclick="filter(1)"/>
+              <input type="checkbox" id="twostars" name="drone" value="2" onclick="filter(this);"/>
               <label for="twostars">2 stars</label>
             </div>
             <div>
-              <input type="checkbox" id="threestars" name="drone" value="3"/>
+              <input type="checkbox" id="threestars" name="drone" value="3" onclick="filter(this);"/>
               <label for="threestars">3 stars</label>
             </div>
             <div>
-              <input type="checkbox" id="fourstars" name="drone" value="4"/>
+              <input type="checkbox" id="fourstars" name="drone" value="4" onclick="filter(this);"/>
               <label for="fourstars">4 stars</label>
             </div>
             <div>
-              <input type="checkbox" id="fivestars" name="drone" value="5"/>
+              <input type="checkbox" id="fivestars" name="drone" value="5" onclick="filter(this);"/>
               <label for="fivestars">5 stars</label>
             </div>
           </div>
@@ -46,11 +47,8 @@
             <xsl:apply-templates/>
           </div>
         </div>
-        <script type="text/javascript">
-var filter = function(s) {
-
-};
-</script>
+        <script type="text/javascript" src="styles/js/jquery-3.3.1.min.js"></script>
+        <script type="text/javascript" src="styles/js/filter.js"></script>
       </body>
     </html>
   </xsl:template>
@@ -62,6 +60,9 @@ var filter = function(s) {
       <xsl:choose>
         <xsl:when test = "$filterstars = 0 or ($mapData(number($key))('stars') = $filterstars)">
           <div class="mt-5">
+            <xsl:attribute name="class">
+                <xsl:value-of select="concat('mt-5 filter', $mapData(number($key))('stars'))"/>
+            </xsl:attribute>
             <div class="row mt-5">
               <div class="col col-2">
                 <img src="$mapData(number($key))('photo')"/>
