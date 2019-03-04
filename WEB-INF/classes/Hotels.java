@@ -119,7 +119,7 @@ public class Hotels extends HttpServlet {
 
             XdmMap xdmMap = XdmMap.makeMap(hashMap);
             trans.setParameter(new QName("mapData"), xdmMap);
-            trans.setParameter(new QName("filterstars"), XdmValue.makeValue(new Integer(stars)));
+            trans.setParameter(new QName("filterstars"), XdmValue.makeValue(Integer.valueOf(stars)));
             trans.setInitialContextNode(source);
             trans.setDestination(out);
             trans.transform();

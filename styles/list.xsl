@@ -7,7 +7,7 @@
     expand-text="yes"
     >
   <xsl:param name="mapData" />
-  <xsl:param name="filterstars" select="'0'"/>
+  <xsl:param name="filterstars" select="0" as="xs:integer"/>
   <xsl:template match="/">
     <html>
       <head>
@@ -22,11 +22,11 @@
           <div style="float: left;width:20%;">
             <strong>Filter hotels</strong>
             <div>
-              <input type="checkbox" id="onestar" name="drone" value="1"/>
+              <input type="checkbox" id="onestar" name="drone" value="1" onclick="filter(1)"/>
               <label for="onestar">1 star</label>
             </div>
             <div>
-              <input type="checkbox" id="twostars" name="drone" value="2"/>
+              <input type="checkbox" id="twostars" name="drone" value="2" onclick="filter(1)"/>
               <label for="twostars">2 stars</label>
             </div>
             <div>
@@ -46,6 +46,11 @@
             <xsl:apply-templates/>
           </div>
         </div>
+        <script type="text/javascript">
+var filter = function(s) {
+
+};
+</script>
       </body>
     </html>
   </xsl:template>
