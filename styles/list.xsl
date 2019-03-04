@@ -16,7 +16,6 @@
       <body leftmargin="100" style="overflow: auto;">
         <div style="display:block;">
           <div style="float: left;width:20%;"></div>
-          <div style="float: right;width:80%;"><h3>Hotels found</h3></div>
         </div>
         <div style="display:block;">
           <div style="float: left;width:20%;">
@@ -51,23 +50,28 @@
   </xsl:template>
 
   <xsl:template match="AvailRsp">
+    <h5><span class="highlight"><xsl:value-of select="count(Hotel)"/></span> Hotels found</h5>
     <xsl:for-each select="Hotel">
       <xsl:variable name="key" select="ID"/>
       <div class="mt-5">
         <div class="row mt-5">
           <div class="col col-2">
             <img src="$mapData(number($key))('photo')"/>
-            <span class=""><xsl:value-of select="$mapData(number($key))('description')" /></span>
           </div>
-          <div class="col col-10">
-            <span class="highlight">
-              <xsl:value-of select="$mapData(number($key))('name')" />
-              <span class="mx-2">
-                <xsl:for-each select="1 to $mapData(number($key))('stars')">
-                    <img src="images/star.png"/>
-                </xsl:for-each>
-              </span>
-            </span>
+          <div class="col col-6">
+            <div class="row">
+                <span class="highlight">
+                  <xsl:value-of select="$mapData(number($key))('name')" />
+                  <span class="mx-2">
+                    <xsl:for-each select="1 to $mapData(number($key))('stars')">
+                        <img src="images/star.png"/>
+                    </xsl:for-each>
+                  </span>
+                </span>
+            </div>
+            <div class="row text-truncate small">
+                <xsl:value-of select="$mapData(number($key))('description')" /> <span class="highlight"><a href="#">...more info</a></span>
+            </div>
           </div>
         </div>
         <div class="row col col-10">

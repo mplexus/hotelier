@@ -35,7 +35,15 @@
         </java>
     </target>
 
+    <target name="clean">
+        <echo>Cleaning existing builds</echo>
+        <delete>
+            <fileset dir="." includes="**/*.class"/>
+        </delete>
+    </target>
+
     <target name="compile">
+        <antcall target="clean"/>
         <echo>Compiling Hotelier</echo>
         <javac
             srcdir="WEB-INF/classes"

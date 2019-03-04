@@ -13,8 +13,8 @@ public class Hotel {
 	private String name, description;
 	private int id, stars_Rating;
 
-	@XmlElement(name = "Photos")
-	private Photos photos;
+	//@XmlElement(name = "Photos")
+	//private Photos photos;
 
 	public String getName() {
 		return this.name;
@@ -34,14 +34,13 @@ public class Hotel {
 		this.description = description;
 	}
 
-	public void setPhotos(Photos photos) {
-		this.photos = photos;
-	}
+	//public void setPhotos(Photos photos) {
+	//	this.photos = photos;
+	//}
 
-	//@XmlElement(name = "Photos")
-	public Photos getPhotos() {
-		return this.photos;
-	}
+	//public Photos getPhotos() {
+	//	return this.photos;
+	//}
 
 	public int getStars_Rating() {
 		return this.stars_Rating;
