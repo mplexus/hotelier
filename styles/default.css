@@ -6,6 +6,10 @@ body {
     font-family: Arial, sans-serif !important;
 }
 
+table {
+    border:1px solid #ddd;
+}
+
 .center {
     text-align: center;
 }

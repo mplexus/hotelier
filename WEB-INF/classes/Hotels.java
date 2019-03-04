@@ -1,5 +1,9 @@
 import java.io.* ;
 
+import java.util.List;
+import java.util.ArrayList;
+import java.util.HashMap;
+
 import javax.servlet.* ;
 import javax.servlet.http.* ;
 
@@ -12,6 +16,11 @@ import javax.xml.bind.*;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
+
+import javax.xml.stream.XMLInputFactory;
+import javax.xml.stream.XMLStreamReader;
+import javax.xml.stream.XMLStreamException;
+
 import com.sun.xml.bind.v2.*;
 
 import net.sf.saxon.s9api.*;
@@ -27,7 +36,7 @@ public class Hotels extends HttpServlet {
 
     private HotelService hotelService = null;
 
-    private HotelData hotelData = null;
+    private List<Hotel> hotelList = new ArrayList<Hotel>();
 
     public Hotels() {
         super();
@@ -60,18 +69,8 @@ public class Hotels extends HttpServlet {
         }
 
 
-        if (hotelData == null) {
-            File file = hotelService.listAllDemo();
-            try {
-                JAXBContext jaxbContext = JAXBContext.newInstance(HotelData.class);
-                Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
-                hotelData = (HotelData) jaxbUnmarshaller.unmarshal(file);
-                System.err.println(hotelData);
-	        } catch (JAXBException e) {
-		         e.printStackTrace();
-	        }
-            String hotelDataStr = hotelService.listAll();
-            //System.err.println(hotelDataStr);
+        if (hotelList.isEmpty()) {
+            retrieveHotelList();
         }
 
         String listAvailable = hotelService.listAvailable(rooms);
@@ -109,10 +108,59 @@ public class Hotels extends HttpServlet {
             Serializer out = proc.newSerializer(response.getOutputStream());
             out.setOutputProperty(Serializer.Property.METHOD, "html");
             out.setOutputProperty(Serializer.Property.INDENT, "yes");
+            //Xslt30Transformer trans = exp.load30();
             XsltTransformer trans = exp.load();
+
+            //HashMap<QName, XdmValue> parameters = new HashMap<>();
+            HashMap hashMap = new HashMap();
+            for (int i = 0; i < hotelList.size(); i++) {
+                //XdmNode document = proc.newDocumentBuilder().build(new StreamSource(new StringReader(hotelService.listAll())));
+                //int id = hotelList.get(i).getId();
+                //String expression = "/Hotels/Hotel[@id=" + "'" + id + "'" + "]";
+                //XPathExecutable exec = proc.newXPathCompiler().compile(expression);
+                //XPathSelector selector = exec.load();
+                //selector.setContextItem((XdmItem)document);
+                //XdmValue result = selector.evaluate();
+
+                HashMap innerHashMap = new HashMap();
+                Hotel hotel = hotelList.get(i);
+                int id = hotel.getId();
+                innerHashMap.put("name", hotel.getName());
+                innerHashMap.put("stars", hotel.getStars_Rating());
+                innerHashMap.put("description", hotel.getDescription());
+
+                for (Photo p : hotel.getPhotos().getPhotos()) {
+                    System.out.println("value: " + p.getContent());
+                    System.out.println("featured: " + p.getFeatured());
+                }
+                /*
+                List<Photo> photos = hotel.getPhotos();
+                hotel.getPhotos().getPhotos()
+                for (int j = 0; j < photos.size(); j++) {
+                    System.err.println(photos.get(j));
+                    System.err.println(photos.get(j).getFeatured());
+                    //if (Boolean.TRUE.equals(photos.get(j).getFeatured())) {
+                        innerHashMap.put("photo", photos.get(j).getContent());
+                    //}
+                }*/
+                hashMap.put(id, innerHashMap);
+                //parameters.put(new QName((String)(id)), hotelList.get(i).getName());
+                //System.err.println(XdmValue.makeSequence((Iterable<Hotel>)hotelList));
+                //out.serializeXdmValue(result);
+                //trans.setParameter(new QName("hotelnames"), result);
+
+                //parameters.put(new QName("mapData"), xdmMap);
+                //trans.setStylesheetParameters(parameters);
+                //trans.setInitialContextNode(xdmMap);
+                //proc.writeXdmValue(result, out);
+            }
+            //XdmMap xdmMap = XdmMap.makeMap(parameters);
+            XdmMap xdmMap = XdmMap.makeMap(hashMap);
+            trans.setParameter(new QName("mapData"), xdmMap);
             trans.setInitialContextNode(source);
             trans.setDestination(out);
             trans.transform();
+            //trans.applyTemplates(new StreamSource(new File("webapps/hotelier/styles/list.xsl")), trans.newSerializer(response.getOutputStream()));
 
             //transformer.transform(new StreamSource(listAvailable), new StreamResult(out));
             //out.println(listAvailable);
@@ -122,7 +170,38 @@ public class Hotels extends HttpServlet {
             out.println(err.getMessage());
             err.printStackTrace();
         }
+    }
 
-        //out.println("</html></body>") ;
+    private void retrieveHotelList() {
+        //File file = hotelService.listAllDemo();
+        try {
+            //FileReader reader = new FileReader(file);
+            //XMLStreamReader xsr = xif.createXMLStreamReader(reader);
+            XMLInputFactory xif = XMLInputFactory.newFactory();
+            XMLStreamReader xsr = xif.createXMLStreamReader(new StringReader(hotelService.listAll()));
+            JAXBContext jaxbContext = JAXBContext.newInstance(Hotel.class);
+            Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
+
+            while(xsr.hasNext()) {
+                int eventType = xsr.next();
+                switch (eventType) {
+                    case XMLStreamReader.START_ELEMENT:
+                        String elementName = xsr.getLocalName();
+                        if (elementName.equals("Hotel")) {
+                            Hotel hotel = (Hotel) jaxbUnmarshaller.unmarshal(xsr);
+                            hotelList.add(hotel);
+                        }
+                        break;
+                    case XMLStreamReader.END_ELEMENT:
+                        break;
+                }
+            }
+        //} catch (FileNotFoundException fnfe) {
+            //fnfe.printStackTrace();
+        } catch (XMLStreamException se) {
+	        se.printStackTrace();
+        } catch (JAXBException je) {
+	         je.printStackTrace();
+        }
     }
 }

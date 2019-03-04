@@ -1,5 +1,12 @@
 
-<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+<xsl:stylesheet version="3.0"
+    xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:map="http://www.w3.org/2005/xpath-functions/map"
+    exclude-result-prefixes="#all"
+    expand-text="yes"
+    >
+  <xsl:param name="mapData" />
   <xsl:template match="/">
     <html>
       <head>
@@ -35,7 +42,7 @@
               <label for="fivestars">5 stars</label>
             </div>
           </div>
-          <div style="float: right;width:80%;">
+          <div style="float: right;width:80%;" class="container">
             <xsl:apply-templates/>
           </div>
         </div>
@@ -45,36 +52,57 @@
 
   <xsl:template match="AvailRsp">
     <xsl:for-each select="Hotel">
-      <div>
-        <h5>Hotel name <xsl:value-of select="ID" /></h5>
-        <xsl:for-each select="RoomGroup">
-            <table style="border:1px solid #ddd;width:100%">
-                <tr>
-                    <th scope="col" colspan="3" style="float:left;">Room <xsl:value-of select="@index" /></th>
-                </tr>
-                <xsl:for-each select="Room">
-                    <tr>
-                        <td style="width:70%">
-                            <xsl:value-of select="name" />
-                            <xsl:value-of select="board" />
-                        </td>
-                        <td style="width:20%" class="highlight">
-                            <span class="nowrap">
-                                EUR <xsl:value-of select="price" />
-                            </span>
-                        </td>
-                        <td style="width:10%">
-                            <input type="radio" name="pickroom">
-                                <xsl:attribute name="value">
-                                    value="<xsl:value-of select="@id"/>"
-                                </xsl:attribute>
-                            </input>
-                        </td>
-                    </tr>
+      <xsl:variable name="key" select="ID"/>
+      <div class="mt-5">
+        <div class="row mt-5">
+          <div class="col col-2">
+            <img src="$mapData(number($key))('photo')"/>
+            <span class=""><xsl:value-of select="$mapData(number($key))('description')" /></span>
+          </div>
+          <div class="col col-10">
+            <span class="highlight">
+              <xsl:value-of select="$mapData(number($key))('name')" />
+              <span class="mx-2">
+                <xsl:for-each select="1 to $mapData(number($key))('stars')">
+                    <img src="images/star.png"/>
                 </xsl:for-each>
+              </span>
+            </span>
+          </div>
+        </div>
+        <div class="row col col-10">
+        <xsl:for-each select="RoomGroup">
+            <table class="table">
+                <thead class="thead-light">
+                    <tr>
+                        <th scope="col" colspan="3" >Room <xsl:value-of select="@index" /></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <xsl:for-each select="Room">
+                        <tr>
+                            <td style="width:70%">
+                                <xsl:value-of select="name" />
+                                <xsl:value-of select="board" />
+                            </td>
+                            <td style="width:20%" class="highlight">
+                                <span class="nowrap">
+                                    EUR <xsl:value-of select="price" />
+                                </span>
+                            </td>
+                            <td style="width:10%">
+                                <input type="radio" name="pickroom">
+                                    <xsl:attribute name="value">
+                                        value="<xsl:value-of select="@id"/>"
+                                    </xsl:attribute>
+                                </input>
+                            </td>
+                        </tr>
+                    </xsl:for-each>
+                </tbody>
             </table>
         </xsl:for-each>
-        <hr/>
+       </div>
       </div>
     </xsl:for-each>
   </xsl:template>
