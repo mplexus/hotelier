@@ -56,11 +56,17 @@ public class Hotels extends HttpServlet {
 
         String roomsStr = request.getParameter("rooms");
         int rooms = 0;
-        try{
+        try {
           rooms = Integer.parseInt(roomsStr);
         }
-        catch(Exception e){
-          rooms = 0;
+        catch (Exception e){
+        }
+
+        String starsStr = request.getParameter("stars");
+        int stars = 0;
+        try {
+            stars = Integer.parseInt(starsStr);
+        } catch (Exception e) {
         }
 
         try {
@@ -113,6 +119,7 @@ public class Hotels extends HttpServlet {
 
             XdmMap xdmMap = XdmMap.makeMap(hashMap);
             trans.setParameter(new QName("mapData"), xdmMap);
+            trans.setParameter(new QName("filterstars"), XdmValue.makeValue(new Integer(stars)));
             trans.setInitialContextNode(source);
             trans.setDestination(out);
             trans.transform();
