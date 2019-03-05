@@ -1,19 +1,9 @@
-
-
-$('.filterbox').click(function(){
-  if ($(this).prop('checked')){
-    alert($(this).value());
-  }else{
-    Console.log("not checked");
-  }
-});
-
 var visible = {
-  'filter1': true,
-  'filter2': true,
-  'filter3': true,
-  'filter4': true,
-  'filter5': true
+  'filter1': false,
+  'filter2': false,
+  'filter3': false,
+  'filter4': false,
+  'filter5': false
 };
 
 function filter(element){
@@ -24,14 +14,25 @@ function filter(element){
     $('.filter'+$(element).val()).hide();
     visible['filter'+$(element).val()] = false;
   }
+  applyVisibility(((Object.values(visible)).filter(function(x){return (x == true);})).length == 0);
+  return false;
+}
+
+function applyVisibility(force) {
   for (v in visible) {
     if (visible.hasOwnProperty(v)) {
-      if (visible.v == true){
-        $(v).show();
+      if (visible[v] == true || force == true){
+        $("."+v).show();
       } else {
-        $(v).hide();
+        $("."+v).hide();
       }
     }
   }
+  var visibleItems = $('[class*="filter"]').filter(':visible');
+  $('.visibleCount').text(visibleItems.length);
   return false;
+}
+
+window.onload = function() {
+  applyVisibility(true);
 }

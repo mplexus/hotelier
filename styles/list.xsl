@@ -54,7 +54,12 @@
   </xsl:template>
 
   <xsl:template match="AvailRsp">
-    <h5><span class="highlight"><xsl:value-of select="count(Hotel)"/></span> Hotels found</h5>
+    <h5>
+        <span class="highlight visibleCount"></span>
+        of
+        <span class="highlight"><xsl:value-of select="count(Hotel)"/></span>
+        Hotels found
+    </h5>
     <xsl:for-each select="Hotel">
       <xsl:variable name="key" select="ID"/>
       <xsl:choose>
