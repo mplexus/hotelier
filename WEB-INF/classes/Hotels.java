@@ -70,6 +70,10 @@ public class Hotels extends HttpServlet {
         }
 
         try {
+
+            //retrieve the promoted hotels list
+            Integer[] promoted = hotelService.listPromoted();
+
             //retrieve once the complete hotel list
             if (hotelList.isEmpty()) {
                 retrieveHotelList();
@@ -117,9 +121,9 @@ public class Hotels extends HttpServlet {
                 hashMap.put(id, innerHashMap);
             }
 
-            XdmMap xdmMap = XdmMap.makeMap(hashMap);
-            trans.setParameter(new QName("mapData"), xdmMap);
+            trans.setParameter(new QName("mapData"), XdmMap.makeMap(hashMap));
             trans.setParameter(new QName("filterstars"), XdmValue.makeValue(Integer.valueOf(stars)));
+            trans.setParameter(new QName("promoted"), XdmValue.makeValue(promoted));
             trans.setInitialContextNode(source);
             trans.setDestination(out);
             trans.transform();

@@ -9,6 +9,8 @@
     >
   <xsl:param name="mapData" />
   <xsl:param name="filterstars" select="0" as="xs:integer"/>
+  <xsl:param name="promoted"/>
+  <xsl:param name="promotedstr" select="string-join($promoted, ' ')" />
   <xsl:template match="/">
     <html>
       <head>
@@ -64,9 +66,14 @@
       <xsl:variable name="key" select="ID"/>
       <xsl:choose>
         <xsl:when test = "$filterstars = 0 or ($mapData(number($key))('stars') = $filterstars)">
-          <div class="mt-5">
+          <div class="mt-5 col col-10">
             <xsl:attribute name="class">
-                <xsl:value-of select="concat('mt-5 filter', $mapData(number($key))('stars'))"/>
+                <xsl:value-of select="concat(' mt-5 col col-10 filter', $mapData(number($key))('stars'))"/>
+                <xsl:choose>
+                  <xsl:when test="contains(normalize-space($promotedstr), $key)">
+                    <xsl:value-of select="' alert-danger'"/>
+                  </xsl:when>
+                </xsl:choose>
             </xsl:attribute>
             <div class="row mt-5">
               <div class="col col-2">
@@ -88,7 +95,7 @@
                 </div>
               </div>
             </div>
-            <div class="row col col-10">
+            <div class="row">
             <xsl:for-each select="RoomGroup">
                 <table class="table">
                     <thead class="thead-light">

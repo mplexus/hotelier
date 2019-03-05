@@ -8,16 +8,41 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+import javax.json.Json;
+import javax.json.JsonObject;
+import javax.json.JsonArray;
+import javax.json.JsonReader;
+import javax.json.JsonException;
+import javax.json.stream.JsonParsingException;
+//import javax.jms.IllegalStateException;
+
 public class HotelService {
     private static final String allHotelsUrl = "http://ibe.dev.youtravel.com/exercise/hotels";
     private static final String availableHotelsUrl = "http://ibe.dev.youtravel.com/exercise/availability";
+    private static final String promotedHotelsUrl = "http://ibe.dev.youtravel.com/exercise/promoted-hotels";
+
+    private HttpURLConnection conn = null;
 
     public String listAll() {
-        return getList(allHotelsUrl);
+        return getList(this.allHotelsUrl);
     }
 
     public File listAllDemo() {
         return new File("webapps/hotelier/styles/listAllDemo.xml");
+    }
+
+    public Integer[] listPromoted() {
+        JsonObject obj = this.getJson(this.promotedHotelsUrl);
+        JsonArray arr = obj.getJsonArray("hotel-ids");
+        int total = arr.size();
+        if (total <= 0) {
+            return null;
+        }
+        Integer[] promoted = new Integer[total];
+        for (int i = 0; i < total; i++) {
+            promoted[i] = Integer.valueOf(arr.getJsonString(i).getString());
+        }
+        return promoted;
     }
 
     public String listAvailableDemo() {
@@ -39,7 +64,7 @@ public class HotelService {
     }
 
     public String listAvailable(int rooms) {
-        String url = availableHotelsUrl;
+        String url = this.availableHotelsUrl;
         if (rooms > 0) {
             url += "?rooms=" + rooms;
         }
@@ -48,10 +73,64 @@ public class HotelService {
 
     private String getList(String urlStr) {
         StringBuilder strBuf = new StringBuilder();
-
-        HttpURLConnection conn=null;
-        BufferedReader reader=null;
+        BufferedReader reader = null;
         try{
+            reader = readFromUrl(urlStr);
+            String output = null;
+            while ((output = reader.readLine()) != null)
+                strBuf.append(output);
+        } catch(IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (reader!=null) {
+                try {
+                    reader.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+            if(conn!=null) {
+                conn.disconnect();
+            }
+        }
+
+        return strBuf.toString();
+    }
+
+    private JsonObject getJson(String urlStr) {
+        JsonReader jsonReader=null;
+        BufferedReader reader = null;
+        JsonObject obj = null;
+
+        try{
+            reader = readFromUrl(urlStr);
+	        jsonReader = Json.createReader(reader);
+            obj = jsonReader.readObject();
+        } catch(JsonException je) {
+            je.printStackTrace();
+        } finally {
+            if (jsonReader!=null) {
+                jsonReader.close();
+            }
+            if (reader!=null) {
+                try {
+                    reader.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+            if(conn!=null) {
+                conn.disconnect();
+            }
+        }
+
+        return obj;
+    }
+
+    private BufferedReader readFromUrl(String urlStr) {
+        BufferedReader reader = null;
+        conn = null;
+        try {
             URL url = new URL(urlStr);
             conn = (HttpURLConnection)url.openConnection();
             conn.setRequestMethod("GET");
@@ -63,30 +142,12 @@ public class HotelService {
             }
 
 	        reader = new BufferedReader(new InputStreamReader(conn.getInputStream(),"utf-8"));
-            String output = null;
-            while ((output = reader.readLine()) != null)
-                strBuf.append(output);
-        }catch(MalformedURLException e) {
+        } catch (MalformedURLException e) {
             e.printStackTrace();
-        }catch(IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
-        }
-        finally
-        {
-            if(reader!=null)
-            {
-                try {
-                    reader.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-            if(conn!=null)
-            {
-                conn.disconnect();
-            }
         }
 
-        return strBuf.toString();
+        return reader;
     }
 }
