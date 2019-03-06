@@ -32,3 +32,15 @@ table {
 .nowrap {
     white-space: nowrap;
 }
+
+.promo {
+    background-color: #FFEEDE !important;
+}
+
+.table {
+    background-color: #fff !important;
+}
+
+.card {
+    border: 0 !important;
+}

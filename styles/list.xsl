@@ -84,16 +84,16 @@
         </xsl:copy>
       <xsl:choose>
         <xsl:when test = "$filterstars = 0 or ($mapData(number($key))('stars') = $filterstars)">
-          <div class="mt-5 col col-10">
+          <div class="">
             <xsl:attribute name="class">
-                <xsl:value-of select="concat(' mt-5 col col-10 filter', $mapData(number($key))('stars'))"/>
+                <xsl:value-of select="concat(' pl-4 pr-4 mt-5 card col col-10 filter', $mapData(number($key))('stars'))"/>
                 <xsl:choose>
                   <xsl:when test="contains(normalize-space($promotedstr), $key)">
-                    <xsl:value-of select="' alert-danger'"/>
+                    <xsl:value-of select="' promo'"/>
                   </xsl:when>
                 </xsl:choose>
             </xsl:attribute>
-            <div class="row mt-5">
+            <div class="row">
               <div class="col col-2">
                 <img src="$mapData(number($key))('photo')"/>
               </div>
