@@ -3,6 +3,8 @@ import java.io.* ;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 
 import javax.servlet.* ;
 import javax.servlet.http.* ;
@@ -36,7 +38,7 @@ public class Hotels extends HttpServlet {
 
     private HotelService hotelService = null;
 
-    private List<Hotel> hotelList = new ArrayList<Hotel>();
+    static List<Hotel> hotelList = new ArrayList<Hotel>();
 
     public Hotels() {
         super();
@@ -48,6 +50,68 @@ public class Hotels extends HttpServlet {
     public void init() throws ServletException {
         super.init();
         System.setProperty("javax.xml.transform.TransformerFactory", "net.sf.saxon.TransformerFactoryImpl");
+    }
+
+    public void doPost(HttpServletRequest request, HttpServletResponse response)
+    throws IOException, ServletException {
+        response.setContentType("text/html") ;
+        String hotel = request.getParameter("hotel");
+        String room1 = request.getParameter("room1");
+        String room2 = request.getParameter("room2");
+        String room3 = request.getParameter("room3");
+
+        List<Integer> rooms = new ArrayList<Integer>();
+
+        if (room1 != null && !room1.isEmpty()) {
+            rooms.add(Integer.valueOf(room1));
+        }
+        if (room2 != null && !room2.isEmpty()) {
+            rooms.add(Integer.valueOf(room2));
+        }
+        if (room3 != null && !room3.isEmpty()) {
+            rooms.add(Integer.valueOf(room3));
+        }
+
+        int totalRooms = rooms.size();
+
+        Map<String, String> hotelData = this.getHotelData(Integer.valueOf(hotel));
+
+        PrintWriter out = response.getWriter();
+        out.println("<html>");
+        out.println("<head>");
+        out.println("<link rel=\"stylesheet\" type=\"text/css\" href=\"styles/default.css\"/>");
+        out.println("<link rel=\"stylesheet\" type=\"text/css\" href=\"styles/bootstrap/css/bootstrap.css\"/>");
+        out.println("<title>Congratulations!</title>");
+        out.println("</head>");
+        out.println("<body class=\"center\">");
+            out.println("<div class=\"card\" style=\"margin:50px;\">");
+              out.println("<h5>Congratulations!</h5>");
+              out.println("<div class='row' width=\"60%\">");
+                out.println("<div class='col col-4'>");
+                  out.println("</div>");
+                  out.println("<div class='col col-4 text-left'>");
+                  out.println("You have booked " + totalRooms + " room" + (totalRooms>1?"s":""));
+                  out.println(" (");
+                  Iterator<Integer> roomsit = rooms.iterator();
+                  while (roomsit.hasNext()) {
+                      Integer room = roomsit.next();
+                      out.print(room);
+                      if (roomsit.hasNext()) {
+                          out.print(", ");
+                      }
+                  }
+                  out.println(")");
+                  out.println(" in ");
+                  out.println("<span class=\"font-weight-bold\">");
+                    out.println(hotelData.get("name"));
+                  out.println("</span>");
+                  out.println("hotel.");
+                out.println("</div>");
+              out.println("</div>");
+              out.println("<a href=\"index.html\" class=\"small highlight\">&lt;&lt;search again</a>");
+            out.println("</div>");
+        out.println("</body>");
+        out.println("</html>");
     }
 
     public void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -75,7 +139,7 @@ public class Hotels extends HttpServlet {
             Integer[] promoted = hotelService.listPromoted();
 
             //retrieve once the complete hotel list
-            if (hotelList.isEmpty()) {
+            if (this.hotelList.isEmpty()) {
                 retrieveHotelList();
             }
 
@@ -94,9 +158,9 @@ public class Hotels extends HttpServlet {
 
             //inject the complete hotel list in the xsl transformation process
             HashMap hashMap = new HashMap();
-            for (int i = 0; i < hotelList.size(); i++) {
+            for (int i = 0; i < this.hotelList.size(); i++) {
                 HashMap innerHashMap = new HashMap();
-                Hotel hotel = hotelList.get(i);
+                Hotel hotel = this.hotelList.get(i);
                 int id = hotel.getId();
                 innerHashMap.put("name", hotel.getName());
                 innerHashMap.put("stars", hotel.getStars_Rating());
@@ -154,7 +218,7 @@ public class Hotels extends HttpServlet {
                         String elementName = xsr.getLocalName();
                         if (elementName.equals("Hotel")) {
                             Hotel hotel = (Hotel) jaxbUnmarshaller.unmarshal(xsr);
-                            hotelList.add(hotel);
+                            this.hotelList.add(hotel);
                         }
                         break;
                     case XMLStreamReader.END_ELEMENT:
@@ -167,5 +231,21 @@ public class Hotels extends HttpServlet {
         } catch (JAXBException je) {
 	         je.printStackTrace();
         }
+    }
+
+    private Map<String, String> getHotelData(int id) {
+        if (this.hotelList.isEmpty()) {
+            retrieveHotelList();
+        }
+        Map<String, String> data = new HashMap<>();
+        Iterator<Hotel> it = this.hotelList.iterator();
+        while (it.hasNext()) {
+            Hotel h = (Hotel)it.next();
+            if (h.getId() == id) {
+                data.put("name", h.getName());
+                //Photo[] photos = h.getPhotos();
+            }
+        }
+        return data;
     }
 }

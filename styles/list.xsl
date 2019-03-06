@@ -86,66 +86,100 @@
         <xsl:when test = "$filterstars = 0 or ($mapData(number($key))('stars') = $filterstars)">
           <div class="">
             <xsl:attribute name="class">
-                <xsl:value-of select="concat(' pl-4 pr-4 mt-5 card col col-10 filter', $mapData(number($key))('stars'))"/>
+                <xsl:value-of select="concat(' pt-4 pl-4 pr-4 mt-5 card col col-10 filter', $mapData(number($key))('stars'))"/>
                 <xsl:choose>
                   <xsl:when test="contains(normalize-space($promotedstr), $key)">
                     <xsl:value-of select="' promo'"/>
                   </xsl:when>
                 </xsl:choose>
             </xsl:attribute>
-            <div class="row">
-              <div class="col col-2">
-                <img src="$mapData(number($key))('photo')"/>
-              </div>
-              <div class="col col-6">
+            <form method="post">
+                <xsl:element name="input">
+                    <xsl:attribute name="style">
+                        <xsl:value-of select="'display:none;'" />
+                    </xsl:attribute>
+                    <xsl:attribute name="name">
+                        <xsl:value-of select="'hotel'" />
+                    </xsl:attribute>
+                    <xsl:attribute name="value">
+                        <xsl:value-of select="$key" />
+                    </xsl:attribute>
+                 </xsl:element>
                 <div class="row">
-                    <span class="highlight">
-                      <xsl:value-of select="$mapData(number($key))('name')" />
-                      <span class="mx-2">
-                        <xsl:for-each select="1 to $mapData(number($key))('stars')">
-                            <img src="images/star.png"/>
-                        </xsl:for-each>
-                      </span>
-                    </span>
+                  <div class="col col-2">
+                    <img src="$mapData(number($key))('photo')"/>
+                  </div>
+                  <div class="col col-8">
+                    <div class="row">
+                        <span class="highlight">
+                          <xsl:value-of select="$mapData(number($key))('name')" />
+                          <span class="mx-2">
+                            <xsl:for-each select="1 to $mapData(number($key))('stars')">
+                                <img src="images/star.png"/>
+                            </xsl:for-each>
+                          </span>
+                        </span>
+                    </div>
+                    <div class="row text-truncate small">
+                        <xsl:value-of select="$mapData(number($key))('description')" /> <span class="highlight"><a href="#">...more info</a></span>
+                    </div>
+                  </div>
+                  <div class="col col-2">
+                      <span class="totalprice highlight"></span>
+                      <input type="submit" value="BOOK" class="btn-highlight pl-3 pr-3"/>
+                  </div>
                 </div>
-                <div class="row text-truncate small">
-                    <xsl:value-of select="$mapData(number($key))('description')" /> <span class="highlight"><a href="#">...more info</a></span>
-                </div>
-              </div>
-            </div>
-            <div class="row">
-            <xsl:for-each select="RoomGroup">
-                <table class="table">
-                    <thead class="thead-light">
-                        <tr>
-                            <th scope="col" colspan="3" >Room <xsl:value-of select="@index" /></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <xsl:for-each select="Room">
+                <div class="row">
+                <xsl:for-each select="RoomGroup">
+                    <xsl:variable name="roomgroup" select="@index"/>
+                    <table class="table">
+                        <thead class="thead-light">
                             <tr>
-                                <td style="width:70%">
-                                    <xsl:value-of select="name" />
-                                    <xsl:value-of select="board" />
-                                </td>
-                                <td style="width:20%" class="highlight">
-                                    <span class="nowrap">
-                                        EUR <xsl:value-of select="price" />
-                                    </span>
-                                </td>
-                                <td style="width:10%">
-                                    <input type="radio" name="pickroom">
-                                        <xsl:attribute name="value">
-                                            value="<xsl:value-of select="@id"/>"
-                                        </xsl:attribute>
-                                    </input>
-                                </td>
+                                <th scope="col" colspan="3" >Room <xsl:value-of select="@index" /></th>
                             </tr>
-                        </xsl:for-each>
-                    </tbody>
-                </table>
-            </xsl:for-each>
-            </div>
+                        </thead>
+                        <tbody>
+                          <xsl:for-each select="Room">
+                            <tr>
+                              <td style="width:70%">
+                                <xsl:value-of select="name" />
+                                <xsl:value-of select="board" />
+                              </td>
+                              <td style="width:20%" class="highlight">
+                                <span class="nowrap">
+                                  EUR <xsl:value-of select="price" />
+                                </span>
+                              </td>
+                              <td style="width:10%">
+                                <input type="radio">
+                                  <xsl:attribute name="value">
+                                    <xsl:value-of select="@id"/>
+                                  </xsl:attribute>
+                                  <xsl:attribute name="name">
+                                    <xsl:value-of select="concat('room',$roomgroup)"/>
+                                  </xsl:attribute>
+                                  <xsl:attribute name="data-toggle">
+                                    <xsl:value-of select="tooltip"/>
+                                  </xsl:attribute>
+                                  <xsl:attribute name="title">
+                                    <xsl:value-of select="@id"/>
+                                  </xsl:attribute>
+                                  <xsl:choose>
+                                    <xsl:when test="position() = 1">
+                                      <xsl:attribute name="checked">
+                                        <xsl:value-of select="'checked'"/>
+                                      </xsl:attribute>
+                                    </xsl:when>
+                                  </xsl:choose>
+                                </input>
+                              </td>
+                            </tr>
+                          </xsl:for-each>
+                        </tbody>
+                    </table>
+                </xsl:for-each>
+                </div>
+            </form>
           </div>
         </xsl:when>
       </xsl:choose >

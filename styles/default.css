@@ -29,6 +29,17 @@ table {
     font-weight: bold;
 }
 
+.btn-highlight {
+    background-color: #C3CF00 !important;
+    color: #768800 !important;
+    border-bottom: 3px solid #768800 !important;
+    border-top: 0px;
+    border-left: 0px;
+    border-right: 0px;
+    font-weight: bold;
+    font-size: 12px;
+}
+
 .nowrap {
     white-space: nowrap;
 }
