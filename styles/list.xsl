@@ -21,7 +21,7 @@
         <div style="display:block;">
           <div style="float: left;width:20%;"></div>
         </div>
-        <div style="display:block;">
+        <div style="display:block;" class="ml-5">
           <div style="float: left;width:20%;">
             <strong>Filter hotels</strong>
             <div>
@@ -46,7 +46,9 @@
             </div>
           </div>
           <div style="float: right;width:80%;" class="container">
-            <xsl:apply-templates/>
+            <xsl:apply-templates>
+                <xsl:sort select="orderelement" order="ascending" data-type="number" />
+            </xsl:apply-templates>
           </div>
         </div>
         <script type="text/javascript" src="styles/js/jquery-3.3.1.min.js"></script>
@@ -63,7 +65,23 @@
         Hotels found
     </h5>
     <xsl:for-each select="Hotel">
+      <xsl:sort select="orderelement" order="ascending" data-type="number" />
       <xsl:variable name="key" select="ID"/>
+      <xsl:copy>
+        <xsl:element name="orderelement">
+            <xsl:attribute name="style">
+                <xsl:value-of select="'display:none;'" />
+            </xsl:attribute>
+            <xsl:choose>
+              <xsl:when test="contains(normalize-space($promotedstr), $key)">
+                <xsl:value-of select="0"/>
+              </xsl:when>
+              <xsl:otherwise>
+                <xsl:value-of select="(1 + position())"/>
+            </xsl:otherwise>
+            </xsl:choose>
+          </xsl:element>
+        </xsl:copy>
       <xsl:choose>
         <xsl:when test = "$filterstars = 0 or ($mapData(number($key))('stars') = $filterstars)">
           <div class="mt-5 col col-10">
