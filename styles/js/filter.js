@@ -6,7 +6,7 @@ var visible = {
   'filter5': false
 };
 
-function filter(element){
+function filter(element) {
   if ($(element).prop('checked')){
     $('.filter'+$(element).val()).show();
     visible['filter'+$(element).val()] = true;
@@ -33,6 +33,26 @@ function applyVisibility(force) {
   return false;
 }
 
+function checkout(element) {
+  var total = 0.00;
+  var group = $(element).closest(".hotelrooms");
+  $(group).find(".room").each(function(){
+    if ($(this).prop('checked')) {
+      var price = $(this).closest("tr").find(".price").text();
+      var subtotal = +total + +price;
+      total = subtotal.toFixed(2);
+    }
+  });
+  $(group).closest("form").find(".totalprice").text(total);
+}
+
+function initializeTotals() {
+  $(".hotelrooms").each(function(){
+    checkout($(this).find(".room").first());
+  });
+}
+
 window.onload = function() {
   applyVisibility(true);
+  initializeTotals();
 }

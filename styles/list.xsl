@@ -109,7 +109,7 @@
                   <div class="col col-2">
                     <img src="$mapData(number($key))('photo')"/>
                   </div>
-                  <div class="col col-8">
+                  <div class="col col-7">
                     <div class="row">
                         <span class="highlight">
                           <xsl:value-of select="$mapData(number($key))('name')" />
@@ -120,16 +120,21 @@
                           </span>
                         </span>
                     </div>
-                    <div class="row text-truncate small">
-                        <xsl:value-of select="$mapData(number($key))('description')" /> <span class="highlight"><a href="#">...more info</a></span>
+                    <div class="row small">
+                        <xsl:value-of select="substring($mapData(number($key))('description'), 1, 70)" /> <a href="#" class="highlight">...more info</a>
                     </div>
                   </div>
-                  <div class="col col-2">
-                      <span class="totalprice highlight"></span>
-                      <input type="submit" value="BOOK" class="btn-highlight pl-3 pr-3"/>
+                  <div class="col col-3 pl-5 clearfix" >
+                      <div class="row nowrap highlight float-right">
+                          EUR <span class="totalprice pl-2"></span>
+                      </div>
+                      <br/>
+                      <div class="row float-right">
+                          <input type="submit" value="BOOK" class="btn-highlight pl-3 pr-3"/>
+                      </div>
                   </div>
                 </div>
-                <div class="row">
+                <div class="row hotelrooms mt-1">
                 <xsl:for-each select="RoomGroup">
                     <xsl:variable name="roomgroup" select="@index"/>
                     <table class="table">
@@ -147,7 +152,7 @@
                               </td>
                               <td style="width:20%" class="highlight">
                                 <span class="nowrap">
-                                  EUR <xsl:value-of select="price" />
+                                  EUR <span class="price"><xsl:value-of select="price" /></span>
                                 </span>
                               </td>
                               <td style="width:10%">
@@ -163,6 +168,15 @@
                                   </xsl:attribute>
                                   <xsl:attribute name="title">
                                     <xsl:value-of select="@id"/>
+                                  </xsl:attribute>
+                                  <xsl:attribute name="class">
+                                    <xsl:value-of select="'room'"/>
+                                  </xsl:attribute>
+                                  <xsl:attribute name="hotelid">
+                                    <xsl:value-of select="$key"/>
+                                  </xsl:attribute>
+                                  <xsl:attribute name="onchange">
+                                    <xsl:value-of select="'checkout(this)'"/>
                                   </xsl:attribute>
                                   <xsl:choose>
                                     <xsl:when test="position() = 1">
