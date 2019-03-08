@@ -15,6 +15,9 @@ public class Hotel {
 
 	//@XmlElement(name = "Photos")
 	//private Photos photos;
+	@XmlElementWrapper(name = "Photos")
+	@XmlElement(name = "Photo")
+	public List<Photo> photos;
 
 	public String getName() {
 		return this.name;
@@ -34,11 +37,11 @@ public class Hotel {
 		this.description = description;
 	}
 
-	//public void setPhotos(Photos photos) {
+	//public void setPhotos(List<Photo> photos) {
 	//	this.photos = photos;
 	//}
 
-	//public Photos getPhotos() {
+	//public List<Photo> getPhotos() {
 	//	return this.photos;
 	//}
 

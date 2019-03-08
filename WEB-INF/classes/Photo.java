@@ -10,13 +10,13 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlValue;
 
 @XmlRootElement(name = "Photo")
-@XmlAccessorType(XmlAccessType.FIELD)
-public class Photo implements Serializable {
+//@XmlAccessorType(XmlAccessType.FIELD)
+public class Photo {
 
     protected boolean featured;
 
     @XmlValue
-    protected String content;
+    public String uri;
 
     @XmlAttribute(name = "featured")
     public boolean getFeatured() {
@@ -26,11 +26,12 @@ public class Photo implements Serializable {
     public void setFeatured(String featured) {
         this.featured = true;
     }
+/*
+    public void setUri(String uri) {
+        this.uri = uri;
+    }
 
-    public void setContent(String content) {
-            this.content = content;
-        }
-        public String getContent() {
-            return content;
-        }
+    public String getUri() {
+        return this.uri;
+    }*/
 }

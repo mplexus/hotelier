@@ -165,7 +165,9 @@ public class Hotels extends HttpServlet {
                 innerHashMap.put("name", hotel.getName());
                 innerHashMap.put("stars", hotel.getStars_Rating());
                 innerHashMap.put("description", hotel.getDescription());
-
+                //innerHashMap.put("photo", ((Photo)(hotel.photos.get(1))).getUri());
+Photo p = (Photo) hotel.photos.get(0);
+System.err.println(p.uri);
                 /*
                 for (Photo p : hotel.getPhotos().getPhotos()) {
                     System.out.println("value: " + p.getContent());
@@ -243,7 +245,8 @@ public class Hotels extends HttpServlet {
             Hotel h = (Hotel)it.next();
             if (h.getId() == id) {
                 data.put("name", h.getName());
-                //Photo[] photos = h.getPhotos();
+                List<Photo> photos = h.photos;//getPhotos();
+            //    data.put("photo", ((Photo)photos.get(1)).getUri());
             }
         }
         return data;
