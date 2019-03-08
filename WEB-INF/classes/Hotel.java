@@ -1,9 +1,6 @@
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlElementWrapper;
 import java.util.List;
 
@@ -13,8 +10,6 @@ public class Hotel {
 	private String name, description;
 	private int id, stars_Rating;
 
-	//@XmlElement(name = "Photos")
-	//private Photos photos;
 	@XmlElementWrapper(name = "Photos")
 	@XmlElement(name = "Photo")
 	public List<Photo> photos;
@@ -37,14 +32,6 @@ public class Hotel {
 		this.description = description;
 	}
 
-	//public void setPhotos(List<Photo> photos) {
-	//	this.photos = photos;
-	//}
-
-	//public List<Photo> getPhotos() {
-	//	return this.photos;
-	//}
-
 	public int getStars_Rating() {
 		return this.stars_Rating;
 	}
@@ -63,4 +50,14 @@ public class Hotel {
 		this.id = id;
 	}
 
+    public String getFeaturedPhotoUri() {
+        for (int j = 0; j < this.photos.size(); j++) {
+            Photo p = (Photo) this.photos.get(j);
+            if (p.getFeatured() != null) {
+                return p.uri;
+            }
+        }
+
+        return "";
+    }
 }

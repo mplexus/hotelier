@@ -10,7 +10,6 @@ import javax.servlet.* ;
 import javax.servlet.http.* ;
 
 import javax.xml.transform.*;
-import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
 import javax.xml.transform.TransformerFactory;
 
@@ -29,9 +28,7 @@ import net.sf.saxon.s9api.*;
 import net.sf.saxon.s9api.Processor;
 import net.sf.saxon.s9api.XsltCompiler;
 import net.sf.saxon.s9api.XsltExecutable;
-import net.sf.saxon.trans.XPathException;
 import net.sf.saxon.s9api.XsltTransformer;
-import net.sf.saxon.s9api.SaxonApiException;
 import net.sf.saxon.TransformerFactoryImpl;
 
 public class Hotels extends HttpServlet {
@@ -39,6 +36,8 @@ public class Hotels extends HttpServlet {
     private HotelService hotelService = null;
 
     static List<Hotel> hotelList = new ArrayList<Hotel>();
+
+    static HashMap hashMap = null;
 
     public Hotels() {
         super();
@@ -88,8 +87,9 @@ public class Hotels extends HttpServlet {
               out.println("<h5>Congratulations!</h5>");
               out.println("<div class='row' width=\"60%\">");
                 out.println("<div class='col col-4'>");
-                  out.println("</div>");
-                  out.println("<div class='col col-4 text-left'>");
+                  out.println("<img class=\"img-thumbnail\" src=\"" + hotelData.get("photo") + "\"/>");
+                out.println("</div>");
+                out.println("<div class='col col-4 text-left'>");
                   out.println("You have booked " + totalRooms + " room" + (totalRooms>1?"s":""));
                   out.println(" (");
                   Iterator<Integer> roomsit = rooms.iterator();
@@ -143,6 +143,12 @@ public class Hotels extends HttpServlet {
                 retrieveHotelList();
             }
 
+            //prepare hotel data to be injected in the xsl transformation process
+            if (this.hashMap == null) {
+                this.hashMap = new HashMap();
+                populateHotelData();
+            }
+
             //retrieve the availability list
             String listAvailable = hotelService.listAvailable(rooms);
             //String listAvailable = hotelService.listAvailableDemo(); //demo
@@ -156,44 +162,12 @@ public class Hotels extends HttpServlet {
             out.setOutputProperty(Serializer.Property.INDENT, "yes");
             XsltTransformer trans = exp.load();
 
-            //inject the complete hotel list in the xsl transformation process
-            HashMap hashMap = new HashMap();
-            for (int i = 0; i < this.hotelList.size(); i++) {
-                HashMap innerHashMap = new HashMap();
-                Hotel hotel = this.hotelList.get(i);
-                int id = hotel.getId();
-                innerHashMap.put("name", hotel.getName());
-                innerHashMap.put("stars", hotel.getStars_Rating());
-                innerHashMap.put("description", hotel.getDescription());
-                //innerHashMap.put("photo", ((Photo)(hotel.photos.get(1))).getUri());
-Photo p = (Photo) hotel.photos.get(0);
-System.err.println(p.uri);
-                /*
-                for (Photo p : hotel.getPhotos().getPhotos()) {
-                    System.out.println("value: " + p.getContent());
-                    System.out.println("featured: " + p.getFeatured());
-                }
-                */
-                /*
-                List<Photo> photos = hotel.getPhotos();
-                hotel.getPhotos().getPhotos()
-                for (int j = 0; j < photos.size(); j++) {
-                    System.err.println(photos.get(j));
-                    System.err.println(photos.get(j).getFeatured());
-                    //if (Boolean.TRUE.equals(photos.get(j).getFeatured())) {
-                        innerHashMap.put("photo", photos.get(j).getContent());
-                    //}
-                }*/
-                hashMap.put(id, innerHashMap);
-            }
-
-            trans.setParameter(new QName("mapData"), XdmMap.makeMap(hashMap));
+            trans.setParameter(new QName("mapData"), XdmMap.makeMap(this.hashMap));
             trans.setParameter(new QName("filterstars"), XdmValue.makeValue(Integer.valueOf(stars)));
             trans.setParameter(new QName("promoted"), XdmValue.makeValue(promoted));
             trans.setInitialContextNode(source);
             trans.setDestination(out);
             trans.transform();
-            System.err.println(listAvailable);
         } catch (Exception err) {
             ServletOutputStream out = response.getOutputStream();
             out.println(err.getMessage());
@@ -242,13 +216,26 @@ System.err.println(p.uri);
         Map<String, String> data = new HashMap<>();
         Iterator<Hotel> it = this.hotelList.iterator();
         while (it.hasNext()) {
-            Hotel h = (Hotel)it.next();
-            if (h.getId() == id) {
-                data.put("name", h.getName());
-                List<Photo> photos = h.photos;//getPhotos();
-            //    data.put("photo", ((Photo)photos.get(1)).getUri());
+            Hotel hotel = (Hotel)it.next();
+            if (hotel.getId() == id) {
+                data.put("name", hotel.getName());
+                data.put("photo", hotel.getFeaturedPhotoUri());
             }
         }
         return data;
+    }
+
+    private void populateHotelData() {
+        for (int i = 0; i < this.hotelList.size(); i++) {
+            HashMap innerHashMap = new HashMap();
+            Hotel hotel = this.hotelList.get(i);
+            int id = hotel.getId();
+            innerHashMap.put("name", hotel.getName());
+            innerHashMap.put("stars", hotel.getStars_Rating());
+            innerHashMap.put("description", hotel.getDescription());
+            innerHashMap.put("photo", hotel.getFeaturedPhotoUri());
+
+            this.hashMap.put(id, innerHashMap);
+        }
     }
 }

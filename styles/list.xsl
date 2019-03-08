@@ -93,7 +93,14 @@
              </xsl:element>
             <div class="row">
               <div class="col col-2">
-                <img src="$mapData(number($key))('photo')"/>
+                <xsl:element name="img">
+                  <xsl:attribute name="src">
+                    <xsl:value-of select="$mapData(number($key))('photo')" />
+                  </xsl:attribute>
+                  <xsl:attribute name="class">
+                    <xsl:value-of select="'img-thumbnail'" />
+                  </xsl:attribute>
+                </xsl:element>
               </div>
               <div class="col col-7">
                 <div class="row">
